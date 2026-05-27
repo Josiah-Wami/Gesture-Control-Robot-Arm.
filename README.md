@@ -8,6 +8,7 @@ A robotic arm controlled entirely by hand gestures using Raspberry Pi and comput
 - [Components](#components)
 - [Challenges Faced](#challenges-faced)
 - [How It Works](#how-it-works)
+- [Flow Diagram](#flow-diagram)
 
 ---
 
@@ -78,3 +79,6 @@ The system demonstrates natural human-machine interaction through embedded contr
 4. **Python Analysis** – Python scripts translate gestures into commands (e.g., fist = close, palm = open).  
 5. **Command Transmission** – Commands are sent to the robotic arm’s servos.  
 6. **Output Action** – The robotic arm performs the movement in real time, mirroring the user’s gesture.  
+
+### Flow Diagram
+![Alt Text](https://github.com/Josiah-Wami/Gesture-Control-Robot-Arm./blob/4e5cb1f38fa6c4cac9b94171a5f4a3670720d487/visily-gesture-controlled-robot-arm-workflow.png)
