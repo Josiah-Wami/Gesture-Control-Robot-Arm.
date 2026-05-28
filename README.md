@@ -78,7 +78,7 @@ The system demonstrates natural human-machine interaction through embedded contr
 2. **Display Input** – The detected hand gesture is shown on a window.
 3. **Processing on Raspberry Pi** – The Pi receives the image and prepares it for analysis.    
 5. **Python Analysis** – Python scripts inside the raspberry pi translate the hand gestures into commands (Left and right).  
-6. **Command Transmission** – The commands are sent to the arduino borad on the robotic arm for excuation.  
+6. **Command Transmission** – The commands are sent to the arduino board on the robotic arm. Execute main.py.  
 7. **Output Action** – The robotic arm performs the movement in real time. 
 
 ---
