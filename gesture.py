@@ -46,7 +46,7 @@ hands = mp_hands.Hands(
 last_cmd = None
 stable_cmd = None
 cmd_start_time = 0
-HOLD_TIME = 0.4  
+HOLD_TIME = 0.4
 
 frame_skip = 2
 frame_count = 0
@@ -55,7 +55,7 @@ frame_count = 0
 def fingers_up(lm):
     tips = [4, 8, 12, 16, 20]
     f = []
-    # Thumb check
+    # Thumb check (Handles natural mirroring)
     f.append(1 if lm.landmark[4].x < lm.landmark[3].x else 0)
     # Remaining fingers check
     for i in range(1, 5):
@@ -63,12 +63,11 @@ def fingers_up(lm):
     return f
 
 def gesture(f):
-    if f == [0, 0, 0, 0, 0]: return "GRIP_CLOSE"
-    if f == [1, 1, 1, 1, 1]: return "GRIP_OPEN"
-    if f == [0, 1, 0, 0, 0]: return "LEFT"
-    if f == [0, 1, 1, 0, 0]: return "RIGHT"
-    if f == [1, 0, 0, 0, 0]: return "UP"
-    if f == [1, 1, 0, 0, 0]: return "DOWN"
+    # Fixed explicitly defined matching states
+    if f == [0, 0, 0, 0, 0]: return "GRIP_CLOSE"  # Fist
+    if f == [1, 1, 1, 1, 1]: return "GRIP_OPEN"   # Open Hand
+    if f == [0, 1, 0, 0, 0]: return "LEFT"        # Index finger up
+    if f == [0, 1, 1, 0, 0]: return "RIGHT"       # Index + Middle finger up
     return None
 
 # ---------------- STREAM ---------------- #
@@ -76,8 +75,7 @@ def gen_frames():
     global last_cmd, stable_cmd, cmd_start_time, frame_count
 
     while True:
-        # LOW POWER FIX: Prevent CPU thread from spinning at 100% utilization
-        time.sleep(0.03) 
+        time.sleep(0.03)
 
         success, frame = cap.read()
         if not success:
@@ -113,7 +111,7 @@ def gen_frames():
                     except Exception as e:
                         print(f"Write error: {e}")
                     last_cmd = current_cmd
-                    cmd_start_time = now - 0.2 
+                    cmd_start_time = now - 0.2
         else:
             stable_cmd = current_cmd
             cmd_start_time = now
@@ -129,11 +127,16 @@ def gen_frames():
 def index():
     return """
     <html>
-        <head><title>Adeept Low-Power Controller</title></head>
+        <head><title>Adeept 2-Axis Controller</title></head>
         <body style="background:#111; color:#fff; text-align:center; font-family:sans-serif;">
-            <h2>Adeept Arm Control (Low-Power Mode Mode)</h2>
+            <h2>Adeept Arm Control (Base & Gripper Only)</h2>
             <img src="/video_feed" style="border:2px solid #333; border-radius:4px;">
-            <p>Fist: Squeeze Gripper | All Fingers Open: Loose Gripper | Index Up: Turn Left | Index+Middle Up: Turn Right</p>
+            <p style="font-size:1.1em; color:#bbb;">
+                <strong>Fist:</strong> Close Gripper |
+                <strong>All Open:</strong> Open Gripper |
+                <strong>Index Up:</strong> Turn Left |
+                <strong>Index+Middle Up:</strong> Turn Right
+            </p>
         </body>
     </html>
     """
