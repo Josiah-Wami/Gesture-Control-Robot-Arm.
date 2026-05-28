@@ -68,7 +68,8 @@ The system demonstrates natural human-machine interaction through embedded contr
 - **Lack of proper guide** – Documentation was scattered, requiring trial and error.  
 - **Raspberry Pi setup** – Flashing the OS and installing drivers was complex and error-prone.  
 - **Python & Arduino integration** – Synchronizing gesture recognition (Python) with servo control (Arduino) was difficult.  
-- **Gesture detection accuracy** – Fine-tuning image processing algorithms was necessary to avoid jerky or incorrect outputs.  
+- **Gesture detection accuracy** – Fine-tuning image processing algorithms was necessary to avoid jerky or incorrect outputs.
+- **Limited power supply** - There is not enough power supply to the robotic arm.
 
 ---
 
