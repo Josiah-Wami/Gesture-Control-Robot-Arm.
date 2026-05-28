@@ -1,4 +1,4 @@
-# Gesture-Controlled Robot Arm
+# Hand Gesture-Controlled Robot Arm
 
 ## Project Description
 A robotic arm controlled entirely by hand gestures using Raspberry Pi and computer vision.
@@ -73,12 +73,12 @@ The system demonstrates natural human-machine interaction through embedded contr
 ---
 
 ### How It Works
-1. **Hand Movement** – A webcam captures the gesture.  
-2. **Processing on Raspberry Pi** – The Pi receives the image and prepares it for analysis.  
-3. **Display Input** – The detected gesture is shown on a monitor for confirmation.  
-4. **Python Analysis** – Python scripts translate gestures into commands (e.g., fist = close, palm = open).  
-5. **Command Transmission** – Commands are sent to the robotic arm’s servos.  
-6. **Output Action** – The robotic arm performs the movement in real time, mirroring the user’s gesture.  
+1. **Hand Movement** – The webcam captures the hand gesture as an input.  
+2. **Display Input** – The detected hand gesture is shown on a window.
+3. **Processing on Raspberry Pi** – The Pi receives the image and prepares it for analysis.    
+5. **Python Analysis** – Python scripts inside the raspberry pi translate the hand gestures into commands (Left and right).  
+6. **Command Transmission** – The commands are sent to the arduino borad on the robotic arm for excuation.  
+7. **Output Action** – The robotic arm performs the movement in real time. 
 
 ---
 
